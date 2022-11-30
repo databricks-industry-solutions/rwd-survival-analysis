@@ -1,4 +1,3 @@
-%md
 # Lung Cancer Survival Analysis Based on RWD
  
 In this notebook we showcase an example of performing survival analysis using `python` and `R` on longitudinal synthetic patient records.
