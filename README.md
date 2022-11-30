@@ -9,10 +9,6 @@ We use simulated data for `~100K` patients to compare survival of patients diagn
 Data are generated with [synthea](https://github.com/synthetichealth/synthea/wiki) using [lung cancer](https://synthetichealth.github.io/module-builder/#lung_cancer) disease module.
 We then use [survival](https://cran.r-project.org/web/packages/survival/index.html) package in R to perform [Kaplan-Meier survival analysis](https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator).
 
-The following diagram is snapshot of [the logic](https://synthetichealth.github.io/module-builder/#lung_cancer) used for simulating the data:
-
-![image](https://hls-eng-data-public.s3.amazonaws.com/img/lung_cancer_module.gif)
- 
 ## Dataflow
 The following diagram summarized the dataflow in this notebook:
  
