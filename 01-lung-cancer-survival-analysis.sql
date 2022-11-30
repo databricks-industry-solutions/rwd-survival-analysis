@@ -1,4 +1,8 @@
 -- Databricks notebook source
+-- MAGIC %md You can find this notebook at https://github.com/databricks-industry-solutions/rwd-survival-analysis
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC # Lung Cancer Survival Analysis
 -- MAGIC In this notebook we demonstrate how to use databricks platform to
@@ -213,6 +217,7 @@
 -- COMMAND ----------
 
 -- MAGIC %sql
+-- MAGIC create or replace temp view age_at_diagnosis_view as
 -- MAGIC select age_at_diagnosis, GENDER, type 
 -- MAGIC from lung_cancer_patients_dataset
 
@@ -221,7 +226,7 @@
 -- DBTITLE 1,Age distribution
 -- MAGIC %python
 -- MAGIC import plotly.express as px
--- MAGIC _pdf = _sqldf.toPandas()
+-- MAGIC _pdf = spark.table("age_at_diagnosis_view").toPandas()
 -- MAGIC px.histogram(_pdf,x='age_at_diagnosis',color='GENDER',pattern_shape="type", marginal="box", hover_data=_pdf.columns)
 
 -- COMMAND ----------

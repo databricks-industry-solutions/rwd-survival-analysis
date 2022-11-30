@@ -1,4 +1,8 @@
 # Databricks notebook source
+# MAGIC %md You can find this notebook at https://github.com/databricks-industry-solutions/rwd-survival-analysis
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC  
 # MAGIC # Lung Cancer Survival Analysis Based on RWD
