@@ -37,43 +37,53 @@ job_json = {
         "max_concurrent_runs": 1,
         "tags": {
             "usage": "solacc_testing",
-            "group": "SOLACC"
+            "group": "HLS"
         },
         "tasks": [
             {
-                "job_cluster_key": "sample_solacc_cluster",
+                "job_cluster_key": "rwd_survival_analysis_cluster",
                 "notebook_task": {
-                    "notebook_path": f"01_Introduction_And_Setup"
+                    "notebook_path": f"00-README"
                 },
-                "task_key": "sample_solacc_01"
+                "task_key": "rwd_survival_analysis_01"
             },
             {
-                "job_cluster_key": "sample_solacc_cluster",
+                "job_cluster_key": "rwd_survival_analysis_cluster",
                 "notebook_task": {
-                    "notebook_path": f"02_Analysis"
+                    "notebook_path": f"01-lung-cancer-survival-analysis"
                 },
-                "task_key": "sample_solacc_02",
-                "depends_on": [
+                "task_key": "rwd_survival_analysis_02",
+                "depends_on": {
+                         "task_key": "rwd_survival_analysis_01"
+                },
+                "libraries": [
                     {
-                        "task_key": "sample_solacc_01"
+                        "pypi": {
+                            "package": "lifelines"
+                        }
+                    },
+                    {
+                        "cran":{
+                            "package" : "ggfortify"
+                        }
                     }
-                ]
+                ],
             }
         ],
         "job_clusters": [
             {
-                "job_cluster_key": "sample_solacc_cluster",
-                "new_cluster": {
-                    "spark_version": "11.3.x-cpu-ml-scala2.12",
-                "spark_conf": {
+              "job_cluster_key": "rwd_survival_analysis_cluster",
+              "new_cluster": {
+                  "spark_version": "11.3.x-cpu-ml-scala2.12",
+                  "spark_conf": {
                     "spark.databricks.delta.formatCheck.enabled": "false"
-                    },
-                    "num_workers": 2,
-                    "node_type_id": {"AWS": "i3.xlarge", "MSA": "Standard_DS3_v2", "GCP": "n1-highmem-4"},
-                    "custom_tags": {
-                        "usage": "solacc_testing"
-                    },
-                }
+                  },
+                  "num_workers": 2,
+                  "node_type_id": {"AWS": "i3.xlarge", "MSA": "Standard_DS3_v2", "GCP": "n1-highmem-4"},
+                  "custom_tags": {
+                      "usage": "solacc_testing"
+                  },
+              }
             }
         ]
     }
